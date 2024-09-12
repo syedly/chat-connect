@@ -1,7 +1,10 @@
+import os
+from dotenv import load_dotenv
 import openai
-from django.conf import settings
 
-openai.api_key = "sk-None-TDzQy85Nh7X0741e9GijT3BlbkFJ85PmwNaXXGlx69xOCtUC"
+load_dotenv()
+
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def get_openai_response(prompt):
     if not prompt:
