@@ -1,0 +1,97 @@
+body {
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.chat-message {
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    color: white; /* White text color for better visibility */
+}
+
+.parent-section-1 {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.chat-gpt-img img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.footer-text {
+    color: white;
+}
+
+.input-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-left: 35%;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 45px 0 15px; /* Adjust padding to make room for the button */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
+    color: white; /* White text color */
+}
+
+.search-input:focus {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly less transparent on focus */
+}
+
+#send-button {
+    position: absolute;
+    right: 15px;
+    background-color: transparent; /* Transparent background */
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .input-container {
+        max-width: 100%;
+        margin-left: 0;
+    }
+}

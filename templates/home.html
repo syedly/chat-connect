@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<div class="profile-cards-container">
+    <!-- Loop through users dynamically -->
+    {% for user in users %}
+        <!-- Skip the logged-in user from showing in the list -->
+        {% if user != request.user %}
+            <div class="profile-card">
+                <h3>{{ user.username }}</h3>
+                <a class="chat-button" href="{% url 'chat-user' user.pk %}">Chat</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Pagination Buttons -->
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a class="page-button" href="?page=1">&laquo; First</a>
+        <a class="page-button" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <!-- Loop through page numbers -->
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <span class="page-button current">{{ num }}</span>
+        {% else %}
+            <a class="page-button" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a class="page-button" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="page-button" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+    {% endif %}
+</div>
+
+{% endblock %}

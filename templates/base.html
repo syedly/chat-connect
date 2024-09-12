@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Chat-Connect{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="parent-div">
+        <div class="logo">
+            <h1>Chat Connect</h1>
+        </div>
+        <div class="logout-button">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+            <button>Logout</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="content">
+        {% block content %}
+        <!-- Default content can go here if needed -->
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat-Connect</title>
+    <link rel="stylesheet" href="{% static 'css/chatai-template.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <div class="content">
+        <div class="chat-container" id="chat-container">
+            <!-- Chat messages will be appended here -->
+            {% if response %}
+                <div class="chat-message">
+                    <p>{{ response }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <footer>
+        <form method="post" id="chat-form">
+            {% csrf_token %}
+            <div class="input-container">
+                <input type="text" class="search-input" name="user_input" id="message-input" placeholder="Message ChatGPT">
+                <button type="submit" id="send-button"><i class="fa-solid fa-arrow-up"></i></button>
+            </div>
+        </form>
+        <div class="parent-section-1">
+            <div class="footer-text">
+                <p>Powered By</p>
+            </div>
+            <div class="chat-gpt-img">
+                <img src="{% static 'css/chatgpt.png' %}" alt="Chat GPT">
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#chat-form').on('submit', function(event) {
+                event.preventDefault();
+                
+                $.ajax({
+                    url: '', 
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#chat-container').append('<div class="chat-message"><p>' + response.message + '</p></div>');
+                        $('#message-input').val('');
+                    },
+                    error: function(xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

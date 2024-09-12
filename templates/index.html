@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-Connect</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">
+            <h1>Chat Connect</h1>
+        </div>
+        <div class="login-signup">
+            <div class="login">
+                <button><a href="{% url 'login' %}">Login</a></button>
+            </div>
+            <div class="signup">
+                <button><a href="{% url 'signup' %}">Signup</a></button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="main">
+        <h1>Connect instantly</h1>
+        <h1>with seamless messaging</h1>
+        <p>Our chat app brings people together with real-time conversations,</p>
+        <p>secure communication, and an intuitive, user-friendly experience designed for everyone.</p>
+    </div>
+    <div class="chat-ai">
+        <button><a href="{% url 'chat_ai' %}">Let's Chat with AI</a></button>
+    </div>
+</body>
+</html>
